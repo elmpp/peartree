@@ -4,7 +4,6 @@
 /* eslint-enable spaced-comment */
 /* eslint-enable @typescript-eslint/triple-slash-reference */
 
-
 // possibly replaceable with Record<p, t>
 interface Dictionary<T> {
   [index: string]: T
@@ -14,9 +13,6 @@ type PartialMock<T> = Partial<T> & Partial<jest.Mock<T>>
 
 type Scalar = string | number
 type ScalarBool = Scalar | boolean
-
-// https://stackoverflow.com/a/50689136/2968327
-// type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>> // now in 3.5
 
 // e.g. String[] -> String
 type Singularise<T> = T extends (infer U)[] ? U : T
@@ -47,7 +43,7 @@ type DeepMandatoriseUnion<T, K extends string> = T & {[U in K]-?: NonNullable<T[
 type OmitUnion<T, K extends string> = Omit<T, K>
 
 // https://goo.gl/6aLYXr
-type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never
 
 // grab the element type - https://tinyurl.com/yy4hepj9
 type ValueOf<T> = T[keyof T]
@@ -106,10 +102,10 @@ type ComponentPropsWithoutChildren<T> = Omit<React.ComponentProps<T>, 'children'
 /**
  * Sometimes don't want React to add its own children onto props
  */
-interface ReactFCSpecifyChildren<P extends {children: any} = {}> {
-  (props: P, context?: any): ReactElement | null
-  propTypes?: WeakValidationMap<P>
-  contextTypes?: ValidationMap<any>
+interface ReactFCSpecifyChildren<P extends {children: any}> {
+  (props: P, context?: any): import('react').ReactElement | null
+  propTypes?: import('react').WeakValidationMap<P>
+  contextTypes?: import('react').ValidationMap<any>
   defaultProps?: Partial<P>
   displayName?: string
 }
@@ -124,26 +120,7 @@ type DictionaryUnionOptional<T, K extends string> = {
   [key in K]?: T
 }
 
-// type ReturnType = ReturnType
-
 /**
  * Get type of function arguments
  */
-type FunctionArgumentTypes<T> = Parameters<T>
-
-// interface StringObject {
-//   [index: string]: string
-// }
-// interface NumberObject {
-//   [index: string]: number
-// }
-// interface ScalarObject {
-//   [index: string]: Scalar
-// }
-// interface ScalarBoolObject {
-//   [index: string]: Scalar
-// }
-
-// type PartialMock<T = {}> = {
-//   [P in keyof T]?: T[P];
-// }
+type FunctionArgumentTypes<T extends (...args: any) => any> = Parameters<T>
