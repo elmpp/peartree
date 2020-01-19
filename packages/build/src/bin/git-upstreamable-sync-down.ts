@@ -7,7 +7,7 @@
  *  - atlassian subtree tutorial - https://tinyurl.com/v4aqeej
  */
 
-import { execSync } from "child_process";
+import {execSync} from 'child_process'
 const params = process.argv.slice(2)
 
 if (params.length !== 2) throw new Error('Params: org, branch')
@@ -27,15 +27,13 @@ const doExec = (cmd: string) => {
 }
 
 const doSync = () => {
-
   const upstreamRemote = `upstream-${org}-${branch}`
-  const destinationPath = `orgs/@${org}-${branch}`
+  const destinationPath = `orgs/${org}-${branch}`
 
   const cmd1 = `${gitPath} subtree pull --prefix ${destinationPath} ${upstreamRemote} ${branch} --squash`
 
   doExec(cmd1)
 }
-
 ;(() => {
   doSync()
   process.exit(0)

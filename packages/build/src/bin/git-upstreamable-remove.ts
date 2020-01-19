@@ -18,7 +18,7 @@ const [org, branch] = params
 
 const gitPath = '/usr/local/bin/git'
 const orgsPath = `orgs`
-const orgRegex = new RegExp(`^@${org}-${branch}.*$`)
+const orgRegex = new RegExp(`^${org}-${branch}.*$`)
 
 const doExec = (cmd: string) => {
   try {
@@ -44,7 +44,7 @@ const doExecFile = (cmd: string, args = []) => {
 }
 
 const doRemove = (anOrgWithBranchOrPR: string) => {
-  const destinationPath = `orgs/@${anOrgWithBranchOrPR}`
+  const destinationPath = `orgs/${anOrgWithBranchOrPR}`
 
   const cmd1 = `${gitPath} filter-branch --index-filter 'git rm --cached --ignore-unmatch -rf ${destinationPath}' --prune-empty -f HEAD`
   const cmd2 = `${gitPath} remote remove upstream-${anOrgWithBranchOrPR} || true`
@@ -60,17 +60,13 @@ const doRemove = (anOrgWithBranchOrPR: string) => {
 
 const getOrgs = (): string[] => {
   return fs
-  .readdirSync(orgsPath, {withFileTypes: true})
-  .filter((dirent: fs.Dirent) => dirent.isDirectory())
+    .readdirSync(orgsPath, {withFileTypes: true})
+    .filter((dirent: fs.Dirent) => dirent.isDirectory())
     .filter((dirent: fs.Dirent) => dirent.name.match(orgRegex))
     .map((dirent: fs.Dirent) => dirent.name)
 }
-
 ;(() => {
-  getOrgs().forEach(anOrg => {
-    const anOrgWithBranchOrPR = anOrg.replace(/@/, '')
-    doRemove(anOrgWithBranchOrPR)
-  })
+  getOrgs().forEach(anOrg => doRemove(anOrg))
   doExecFile('git-clean-repo')
   process.exit(0)
 })()

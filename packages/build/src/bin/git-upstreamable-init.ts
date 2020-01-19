@@ -29,7 +29,7 @@ const doSync = () => {
 
   const upstreamRemote = `upstream-${org}-${branch}`
   const splittableRemote = `splittable-${org}-${branch}`
-  const destinationPath = `orgs/@${org}-${branch}`
+  const destinationPath = `orgs/${org}-${branch}`
   const splittableRepo = `git@github.com:elmpp/${org}.git`
 
   try {

@@ -29,7 +29,7 @@ const doExec = (cmd: string) => {
 
 const doSync = () => {
   const sourceSplittableRemote = `splittable-${org}-${branch}`
-  const sourcePath = `orgs/@${org}-${branch}`
+  const sourcePath = `orgs/${org}-${branch}`
   const splittableRepoHttp = `https://github.com/elmpp/${org}/compare/${branch}...elmpp:${prName}`
 
   try {

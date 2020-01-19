@@ -5,7 +5,7 @@
  * Removes all commits not in the author list below
  */
 
-import { execSync } from "child_process";
+import {execSync} from 'child_process'
 
 const gitPath = '/usr/local/bin/git'
 
@@ -20,7 +20,6 @@ const doExec = (cmd: string) => {
 }
 
 const deleteCommits = (email: string) => {
-
   const cmd1 = `${gitPath} filter-branch -f --commit-filter '
   if [ "$GIT_AUTHOR_EMAIL" = "${email}" ];
   then
@@ -33,7 +32,6 @@ const deleteCommits = (email: string) => {
 }
 
 const deleteTags = (email: string) => {
-
   const cmd1 = `git for-each-ref --shell --format='%(taggeremail) %(tag)' refs/tags/$(TAG) | \
   while read entry;
   do
@@ -49,7 +47,6 @@ const deleteTags = (email: string) => {
 
   doExec(cmd1)
 }
-
 ;(() => {
   deleteCommits('matthew.penrice@gmail.com')
   deleteTags('<matthew.penrice@gmail.com>')

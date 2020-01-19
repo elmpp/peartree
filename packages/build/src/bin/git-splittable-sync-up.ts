@@ -8,8 +8,8 @@
  *  - atlassian subtree tutorial - https://tinyurl.com/v4aqeej
  */
 
-import { execSync } from "child_process";
-const orgs = process.argv.slice(2);
+import {execSync} from 'child_process'
+const orgs = process.argv.slice(2)
 
 if (typeof orgs === 'undefined') throw new Error('Supply org names as parameters')
 
@@ -26,15 +26,13 @@ const doExec = (cmd: string) => {
 }
 
 const doSync = (org: string) => {
-
-  const destinationPath = `orgs/@${org}`
+  const destinationPath = `orgs/${org}`
   const upstreamRemote = `splittable-${org}`
 
   const cmd1 = `${gitPath} subtree push --prefix ${destinationPath} ${upstreamRemote} $(${gitPath} rev-parse --abbrev-ref HEAD)`
 
   doExec(cmd1)
 }
-
 ;(() => {
   orgs.forEach(org => doSync(org))
   process.exit(0)
