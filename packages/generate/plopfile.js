@@ -21,4 +21,5 @@ module.exports = plop => {
   plop.setHelper('ternary', ternaryHelper)
   plop.setHelper('equal', equalHelper)
   plop.setHelper('camelCaseBasename', str => _.camelCase((str.match(/^([^.]+)\..+$/) || str)[1]))
+  plop.setHelper('basename', str => (str.match(/^([^.]+)\..+$/) || str)[1])
 }

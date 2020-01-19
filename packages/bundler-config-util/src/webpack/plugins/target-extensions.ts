@@ -4,7 +4,7 @@ import {Plugin} from '../../__types__'
  * Also allow module files to resolve preferentially if e.g. .web.tsx extension
  *  - module resolving with extensions - https://tinyurl.com/yxuj7fku
  */
-export const setTargetExtensions: Plugin<string[]> = (targetExtensions = []) => config => {
+export const targetExtensions: Plugin<string[]> = (targetExtensions = []) => config => {
   const extensionsForTarget = ['.js', '.jsx', '.ts', '.tsx']
 
   function addExtension(extensions: string[], extensionPrefix: string) {

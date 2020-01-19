@@ -6,7 +6,7 @@ import {isDev} from '../config-util'
  * Enables the start-server-webpack-plugin in dev
  *  - GH - https://tinyurl.com/yyvyrox5
  */
-export const startServer: Plugin<Args> = pluginArgs => config => {
+export const startServerPlugin: Plugin<Args> = pluginArgs => config => {
   if (!isDev(config)) {
     return config
   }

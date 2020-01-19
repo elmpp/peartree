@@ -1,0 +1,13 @@
+{{#each files}}
+{{#if named}}
+const {{{camelCaseBasename this}}} = require('./{{basename this}}')
+{{else}}
+const {{camelCaseBasename this}} = require('./{{basename this}}')
+{{/if}}
+{{/each}}
+
+module.exports = {
+{{#each files}}
+  {{camelCaseBasename this}},
+{{/each}}
+}

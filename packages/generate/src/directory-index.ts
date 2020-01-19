@@ -6,6 +6,7 @@
  *
  *  - plop docs - https://tinyurl.com/y2phrzsg
  *  - inquirer prompt types - https://tinyurl.com/yaewkyku
+ *  - fuzzypath - https://tinyurl.com/y28xvl52
  */
 
 import fs from 'fs'
@@ -13,9 +14,15 @@ import _ from 'lodash'
 import inquirer from 'inquirer'
 import path from 'path'
 import {CustomActionFunction, AddActionConfig} from 'plop'
-const fuzzy = require('inquirer-fuzzy-path') // eslint-disable-line @typescript-eslint/no-var-requires
 
-inquirer.registerPrompt('fuzzypath', fuzzy)
+inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path')) // eslint-disable-line @typescript-eslint/no-var-requires
+
+const extensions = ['ts', 'js'] as const
+interface Answers {
+  directory: string
+  extension: typeof extensions
+  named: boolean
+}
 
 export const directoryIndex = () => ({
   description: 'traverses a directory of files and produces an index file',
@@ -25,27 +32,39 @@ export const directoryIndex = () => ({
       name: 'directory',
       message: 'Choose a directory to add index.js for',
       // custom fields - https://tinyurl.com/y28xvl52
-      // excludePath: (nodePath: string) => nodePath.match('node_modules'),
-      rootPath: '/Users',
-      // rootPath: path.resolve(__dirname, '../../../../../../..'),
+      excludePath: (nodePath: string) => nodePath.match('node_modules') || nodePath.match('.git'),
+      excludeFilter: (nodePath: string) => nodePath.match(/\/index\.(?:js|ts)/g),
+      rootPath: path.resolve(__dirname, '../../../..'),
       itemType: 'directory',
       suggestOnly: false,
       // depthLimit: 3,
     },
-  ],
-  actions: [
-    findFiles,
-    // doTemplating(plop),
     {
-      type: 'add',
-      templateFile: path.resolve(__dirname, '../templates/directory-index/template-index.hbs'),
-      path: '{{directory}}/index.js',
-      // data: answers.findFiles,
-      force: true,
-      // skipIfExists: false,
-      // abortOnFail: true,
-    } as AddActionConfig,
+      type: 'list',
+      name: 'extension',
+      message: 'js or ts',
+      choices: extensions,
+    },
+    {
+      type: 'confirm',
+      name: 'named',
+      message: 'Are imports named (i.e. not default)',
+    },
   ],
+  actions: (answers: Answers) => {
+    return [
+      findFiles,
+      {
+        type: 'add',
+        templateFile: path.resolve(__dirname, `../templates/directory-index/template-index.${answers.extension}.hbs`),
+        path: `{{directory}}/index.${answers.extension}`,
+        // data: answers.findFiles,
+        force: true,
+        // skipIfExists: false,
+        // abortOnFail: true,
+      } as AddActionConfig,
+    ]
+  },
 })
 
 /**
