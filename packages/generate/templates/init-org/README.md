@@ -8,8 +8,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/elmpp/{{ orgNormalised }}/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/elmpp/{{ orgNormalised }}/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/elmpp/{{ org }}/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/elmpp/{{ org }}/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -47,7 +47,7 @@ Node version as shown in `/package.json`
 ### Installing
 
 ```
-git clone https://github.com/elmpp/{{orgNormalised}} && cd {{orgNormalised}} && yarn bootstrap
+git clone https://github.com/elmpp/{{org}} && cd {{org}} && yarn bootstrap
 ```
 
 You can then run the project with:

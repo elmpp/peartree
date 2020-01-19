@@ -2,10 +2,10 @@
   "name": "@peartree/generate",
   "version": "0.6.1",
   "description": "code templating and generation",
-  "author": "\"Matt Penrice\" <\"matthew.penrice@gmail.com\">",
+  "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "main": "dist/index.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
     "transpile-watch": "yarn transpile --watch"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "bugs": {
     "url": "https://github.com/elmpp/peartree/issues"

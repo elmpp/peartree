@@ -2,8 +2,8 @@ This directory will contain git subprojects, split by branch
 
 ## Environment
 
-- [{{orgNormalised}} github project]({{remoteHttp}})
-- [{{orgNormalised}} git remote]({{remote}})
+- [{{org}} github project]({{remoteHttp}})
+- [{{org}} git remote]({{remote}})
 
 ## Reading
 

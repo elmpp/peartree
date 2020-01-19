@@ -104,7 +104,7 @@ export const initPackage = () => ({
         stripExtensions: ['hbs'],
         data: {
           lernaVersion: getLernaVersion(),
-          // orgNormalised: answers.org.replace(/@/, ''),
+          // org: answers.org.replace(/@/, ''),
         },
       } as AddManyActionConfig,
     ]

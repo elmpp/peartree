@@ -48,7 +48,7 @@ export const initOrg = () => ({
         force: false,
         stripExtensions: ['hbs'],
         data: {
-          // orgNormalised: answers.org.replace(/@/, ''),
+          // org: answers.org.replace(/@/, ''),
         },
       } as AddManyActionConfig,
       cleanup,
