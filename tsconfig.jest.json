@@ -18,7 +18,7 @@
     "**/*.ts",
     "**/*.tsx",
     "typings/index.d.ts",
-  ]
+  ],
   "exclude": [
     "node_modules"
   ],

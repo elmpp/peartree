@@ -1,7 +1,7 @@
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 import {isServer, isClient} from '../config-util'
-import {setMainFields} from './main-fields'
-import {setTargetExtensions} from './target-extensions'
+import {mainFields} from './main-fields'
+import {targetExtensions} from './target-extensions'
 
 /**
  * Allow some differing package content based on target.
@@ -11,12 +11,12 @@ import {setTargetExtensions} from './target-extensions'
  */
 export const mainFieldsExtensionsClient: Plugin<never> = () => config => {
   if (isServer(config)) {
-    setMainFields(['source', 'module', 'main'])(config)
-    setTargetExtensions(['.node'])(config)
+    mainFields(['source', 'module', 'main'])(config)
+    targetExtensions(['.node'])(config)
   }
   if (isClient(config)) {
-    setMainFields(['browser', 'source', 'module', 'main'])(config)
-    setTargetExtensions(['.web'])(config)
+    mainFields(['browser', 'source', 'module', 'main'])(config)
+    targetExtensions(['.web'])(config)
   }
   // if (isMobile(options)) {
   //   setMainFields(config, options, webpackObject, ['react-native', 'source', 'module', 'main'])

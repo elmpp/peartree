@@ -67,9 +67,13 @@
   "dependencies": {
   },
   "devDependencies": {
+    {{#equal transpile 'ts-webpack' }}
+    "@peartree/webpack-config-util": "*",
+    {{/equal}}
     {{#equal transpile 'ts-tsc' }}
     {{else}}
-    "@peartree/build": "*"
+    "@peartree/build-toolkit": "*",
     {{/equal}}
+    "": ""
   }
 }

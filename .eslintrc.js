@@ -93,7 +93,7 @@ const commonRules = {
   'jsx-a11y/no-static-element-interactions': 0,
   // overriding prettier - https://tinyurl.com/y94dyf3q
   'prettier/prettier': [
-    'error',
+    1,
     {
       ...commonPrettierRules,
     },
@@ -173,7 +173,7 @@ module.exports = {
       rules: {
         ...commonRules,
         'prettier/prettier': [
-          'error',
+          1,
           {
             ...commonPrettierRules,
             parser: 'typescript',

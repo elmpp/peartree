@@ -1,4 +1,4 @@
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 import StartServerPlugin, {Args} from 'start-server-webpack-plugin'
 import {isDev} from '../config-util'
 

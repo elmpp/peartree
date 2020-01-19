@@ -1,66 +1,10 @@
-import {webpack} from '@peartree/build'
+import {plugins, getDevPackagesPaths, compose, createConfig} from '@peartree/webpack-config-util'
 
-{{!-- const {
-  startServer,
-  ignorePgNative,
-  partridgeConfig,
-  partridgeLogging,
-  whitelistModules,
-  setMainFields,
-  transpileTypescriptModules,
-  lodash,
-  definePluginVars,
-  debugConfig,
-  webpackDashboard,
-  webpackAnalyzer,
-} = require('org-build') --}}
-{{!-- import fs from 'fs' --}}
-const {getDevPackagesPaths} = require('org-build/dist/util')
+const composedPlugins = compose(
+  plugins.mainFields(['ts', 'tsx', 'js']),
+  plugins.whitelistAllPackages(),
+)
 
-// the modules that should be transpiled (as TS) and included in bundle
-const includableDevModules = getDevPackagesPaths()
+const config = composedPlugins(createConfig({}))
 
-/**
- * @typedef Options
- */
-const options = {
-  serverEntryPoint: require.resolve('./src/index.ts'),
-  nodeBundle: 'server',
-  port: 3003,
-  plugins: [
-    {
-      func: startServer,
-      // options: {
-      //   name: 'functions-framework',
-      //   args: ['build/server.js'],
-      // }
-    },
-    {
-      func: setMainFields,
-      options: ['source', 'module', 'main'],
-    },
-    ignorePgNative,
-    lodash,
-    partridgeConfig,
-    partridgeLogging,
-    definePluginVars,
-    {
-      func: whitelistModules,
-      options: {bundleableModules: [...includableDevModules], withHoisting: true},
-    },
-    {
-      func: transpileTypescriptModules,
-      options: includableDevModules,
-    },
-    // debug is last, obvs
-    // {
-    //   func: debugConfig,
-    //   options: 'node', // target to debug
-    // },
-    // --- debugging bundle contents...
-    webpackDashboard,
-    webpackAnalyzer,
-  ],
-}
-
-module.exports = options
+export default config

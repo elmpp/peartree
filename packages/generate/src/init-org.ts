@@ -52,10 +52,21 @@ export const initOrg = () => ({
         },
       } as AddManyActionConfig,
       cleanup,
+      postCreate,
       git,
     ]
   },
 })
+
+/**
+ *  - Sets up our typings folders in the base of the org. This symbolic link will be made
+ * to the base of the monorepo which should already be a link to typescript-aliases:typings
+ * This way all orgs will have their own copy of the typescript aliases when splitted
+ */
+const postCreate: CustomActionFunction = (_answers: Answers) => {
+  execSync(`ln -s ../../typings typings`, {stdio: 'inherit', cwd: path.resolve(__dirname, '../../..')})
+  return 'postCreate hook ran'
+}
 
 const cleanup: CustomActionFunction = (answers: Answers) => {
   const destinationDir = getDestinationDir(answers)

@@ -1,10 +1,8 @@
-
-
 declare namespace NodeJS {
   interface Process {
-    noDeprecation: boolean,
+    noDeprecation: boolean
   }
   interface ProcessEnv {
-    NODE_ENV: 'production' | 'development',
+    NODE_ENV: 'production' | 'development'
   }
 }

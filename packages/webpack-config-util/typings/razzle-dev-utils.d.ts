@@ -1,5 +1,3 @@
-/// <reference path="./webpack-config-helpers.d.ts" />
-
 /**
  * razzle-dev-utils - https://tinyurl.com/yxzqw6v8
  */

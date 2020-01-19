@@ -7,7 +7,7 @@ import path from 'path'
 import WebpackConfigHelpers from 'razzle-dev-utils/WebpackConfigHelpers'
 import {DefinePlugin, RuleSetCondition, RuleSetLoader, RuleSetConditions} from 'webpack'
 import webpackNodeExternals, {WhitelistOption} from 'webpack-node-externals'
-import {Plugin, IsDev, IsServer, IsClient} from '../__types__'
+import {Plugin, Configuration} from './__types__'
 import {LoaderIncludeExcludeEntry} from './__types__'
 
 const Helpers = new WebpackConfigHelpers(process.cwd())
@@ -22,9 +22,9 @@ type NodeModulesSets = {
   nodeModuleDirs: string[]
 }
 
-export const isDev: IsDev = config => config.mode === 'development' || false
-export const isServer: IsServer = config => config.target === 'node'
-export const isClient: IsClient = config => config.target === 'web'
+export const isDev: (args: Pick<Configuration, 'mode'>) => boolean = config => config.mode === 'development' || false
+export const isServer: (args: Pick<Configuration, 'target'>) => boolean = config => config.target === 'node'
+export const isClient: (args: Pick<Configuration, 'target'>) => boolean = config => config.target === 'web'
 
 /**
  * Adds definitions onto existing DefinePlugin definitions; adds plugin to the list otherwise
@@ -186,20 +186,17 @@ export const removeLoader: Plugin<string> = loaderName => config => {
  *  - webpack docs - https://tinyurl.com/y276muk2
  *  - npm package webpack-node-externals - https://tinyurl.com/y3c5ofhd
  */
-export const externaliseNodeModules: Plugin<NodeModulesSets> = (pluginArgs: {
-  moduleWhitelist
-  nodeModuleDirs
-}) => config => {
+export const externaliseNodeModules: Plugin<NodeModulesSets> = ({moduleWhitelist, nodeModuleDirs}) => config => {
   const externalsWithoutFuncs = (config.externals || []).filter(external => typeof external !== 'function')
 
   // we will always need the webpack/hot/poll module bundled. (other externals from create-config should be passed through)
-  if (isDev(config)) pluginArgs.moduleWhitelist.push('webpack/hot/poll?300')
+  if (isDev(config)) moduleWhitelist.push('webpack/hot/poll?300')
 
   config.externals = externalsWithoutFuncs.concat(
-    pluginArgs.nodeModuleDirs.map(nodeModuleDir =>
+    nodeModuleDirs.map(nodeModuleDir =>
       webpackNodeExternals({
         modulesDir: path.resolve(process.cwd(), nodeModuleDir),
-        whitelist: pluginArgs.moduleWhitelist,
+        whitelist: moduleWhitelist,
       })
     )
   )
