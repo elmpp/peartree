@@ -1,0 +1,9 @@
+{{#each files}}
+import {{camelCaseBasename this}} from './{{this}}'
+{{/each}}
+
+module.exports = {
+  {{#each files}}
+    {{camelCaseBasename this}},
+  {{/each}}
+}

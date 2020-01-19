@@ -1,0 +1,75 @@
+{
+  "name": "{{ org }}/{{ name }}",
+  "version": "{{ lernaVersion }}",
+  "description": "Default description for {{ name }}",
+  "author": "Matt Penrice <matthew.penrice@gmail.com>",
+  "homepage": "https://github.com/elmpp/{{ orgNormalised }}#readme",
+  "license": "MIT",
+  "keywords": [],
+  "private": {{ ternary published "false" "true" }},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmpp/{{ orgNormalised }}.git"
+  },
+  {{#equal transpile 'ts-tsc'}}
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  {{/equal}}
+  {{#equal transpile 'ts-microbundle' }}
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "module": "dist/index.m.js",
+  "types": "dist/index.d.ts",
+  {{/equal}}
+  {{#unless transpile}}
+  "main": "index.js",
+  {{/unless}}
+  "scripts": {
+    {{#if typescript}}
+    "lint": "tsc --noEmit",
+    {{else}}
+    "lint": "echo ''",
+    {{/if}}
+    "postinstall": "cd ../.. && yarn postinstall",
+    {{#if published}}
+    "prepublishOnly": "yarn transpile",
+    {{/if}}
+    {{#equal transpile 'ts-tsc' }}
+    "transpile": "tsc --module commonjs",
+    "transpile-watch": "yarn transpile --watch",
+    {{/equal}}
+    {{#equal transpile 'ts-microbundle' }}
+    "transpile": "peartree-build build-microbundle -f es,cjs,modern --target node",
+    "transpile-watch": "peartree-build build-microbundle-watch -f es,cjs,modern --target node",
+    {{/equal}}
+    {{#equal transpile 'ts-webpack' }}
+    "build": "webpack",
+    "toADDINHERE": "",
+    {{/equal}}
+    {{#equal transpile 'js-webpack' }}
+    "build": "yarn transpile",
+    "toADDINHERE": "",
+    {{/equal}}
+    "": ""
+  },
+  "bugs": {
+    "url": "https://github.com/elmpp/{{ orgNormalised }}/issues"
+  },
+  "engines": {
+    "node": ">=12.14.0"
+  },
+  {{#if published}}
+  "publishConfig": {
+    "access": "{{ ternary published "public" "restricted" }}"
+  },
+  {{/if}}
+  "dependencies": {
+  },
+  "devDependencies": {
+    {{#equal transpile 'ts-tsc' }}
+    {{else}}
+    "@peartree/build": "*"
+    {{/equal}}
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "@peartree/generate",
+  "version": "0.6.1",
+  "description": "code templating and generation",
+  "author": "\"Matt Penrice\" <\"matthew.penrice@gmail.com\">",
+  "homepage": "https://github.com/elmpp/peartree#readme",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmpp/peartree.git"
+  },
+  "scripts": {
+    "lint": "tsc --noEmit",
+    "postinstall": "cd ../.. && yarn postinstall",
+    "plop": "plop",
+    "prepublishOnly": "yarn transpile",
+    "transpile": "tsc --module commonjs",
+    "transpile-watch": "yarn transpile --watch"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "bugs": {
+    "url": "https://github.com/elmpp/peartree/issues"
+  },
+  "engines": {
+    "node": ">=12.14.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "6.5.0",
+    "inquirer-fuzzy-path": "2.1.0",
+    "plop": "^2.4.0"
+  },
+  "dependencies": {
+    "handlebars-helper-ternary": "^1.0.0",
+    "lodash": "4.17.15"
+  }
+}

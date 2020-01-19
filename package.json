@@ -1,0 +1,48 @@
+{
+  "name": "peartree-root",
+  "version": "0.5.1",
+  "private": true,
+  "description": "Default description for peartree",
+  "repository": "git@github.com:elmpp/peartree.git",
+  "author": "matthew.penrice@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elmpp/peartree/issues"
+  },
+  "scripts": {
+    "contributors-generate": "all-contributors generate",
+    "format": "eslint . --fix",
+    "postinstall": "cd ../.. && yarn postinstall",
+    "test": "jest --passWithNoTests"
+  },
+  "engines": {
+    "node": ">=12.14.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "@commitlint/config-lerna-scopes": "8.2.0",
+    "@types/jest": "24.0.23",
+    "@types/lodash": "4.14.149",
+    "@types/react": "16.8.23",
+    "@typescript-eslint/eslint-plugin": "2.13.0",
+    "@typescript-eslint/parser": "2.13.0",
+    "all-contributors-cli": "6.11.2",
+    "babel-eslint": "10.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jest": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-prettier": "*",
+    "eslint-plugin-promise": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "husky": "3.1.0",
+    "jest": "24.9.0",
+    "patch-package": "6.2.0",
+    "prettier": "1.19.1",
+    "ts-jest": "24.2.0",
+    "typescript": "3.7.4"
+  }
+}
