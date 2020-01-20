@@ -1,4 +1,4 @@
-# Webpack Config Util
+# webpack-config-utils
 
 <!-- ## Table of Contents
 + [Problem](#problem)
@@ -82,3 +82,6 @@ This will output the full webpack config. Debug here or apply the [debug plugin]
 ## Plugins <a name = "plugins"></a>
 
 TBD. You can check them all [here](https://github.com/elmpp/peartree/tree/master/packages/webpack-config-util/src/plugins)
+
+
+## Articles <a name = "options"></a>
