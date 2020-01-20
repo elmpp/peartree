@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 Your issue may already be reported!
-Please search on the Github's [issues](https://github.com/elmpp/{{org}}/issues) before creating one.
+Please search on the Github's [issues](https://github.com/elmpp/blocked/issues) before creating one.
 
 ## Expected Behavior
 <!--- If you're describing a bug, tell us what should happen -->
