@@ -84,4 +84,8 @@ This will output the full webpack config. Debug here or apply the [debug plugin]
 TBD. You can check them all [here](https://github.com/elmpp/peartree/tree/master/packages/webpack-config-util/src/plugins)
 
 
-## Articles <a name = "options"></a>
+## Contributing <a name = "contributing"></a>
+
+This package is part of a monorepo. Please see [here](https://github.com/elmpp/{{org}}) for details of how to contribute.
+
+The project follows the all-contributors specification. Contributions of any kind welcome!
