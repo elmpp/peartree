@@ -1,5 +1,5 @@
 {
-  "name": "@{{ org }}/{{ name }}",
+  "name": "{{packageName}}",
   "version": "{{ lernaVersion }}",
   "description": "Default description for {{ name }}",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
@@ -43,14 +43,10 @@
     "transpile": "peartree-build build-microbundle -f es,cjs,modern --target node",
     "transpile-watch": "peartree-build build-microbundle-watch -f es,cjs,modern --target node",
     {{/equal}}
-    {{#equal transpile 'ts-webpack' }}
-    "build": "webpack",
-    "toADDINHERE": "",
-    {{/equal}}
-    {{#equal transpile 'js-webpack' }}
-    "build": "yarn transpile",
-    "toADDINHERE": "",
-    {{/equal}}
+    {{#match transpile '-webpack' }}
+    "build": "NODE_ENV=production build-webpack-production",
+    "dev": "NODE_ENV=development build-webpack-development",
+    {{/match}}
     "": ""
   },
   "bugs": {
@@ -67,10 +63,14 @@
   "dependencies": {
   },
   "devDependencies": {
-    {{#equal transpile 'ts-tsc' }}
+    {{#match transpile '-webpack' }}
+    "@peartree/webpack-config-util": "*"
     {{else}}
+      {{#equal transpile 'ts-tsc' }}
+      {{else}}
     "@peartree/build-toolkit": "*",
     "@peartree/webpack-config-util": "*"
-    {{/equal}}
+      {{/equal}}
+    {{/match}}
   }
 }

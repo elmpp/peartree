@@ -1,13 +1,22 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    {{#equal transpile 'ts-webpack' }}
+    "module": "commonjs",
+    {{else}}
     "incremental": true,
     "tsBuildInfoFile": "dist/.tsbuildinfo",
     "rootDir": "src",
     "outDir": "dist",
-    {{#equal transpile 'ts-webpack' }}
-    "module": "commonjs",
     {{/equal}}
   },
-  "include": ["src/**/*.ts", "./typings/index.d.ts", "../../typings/index.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "./typings/index.d.ts",
+    "../../typings/index.d.ts",
+    {{#equal transpile 'ts-webpack' }}
+    "./webpack.config.ts",
+    {{/equal}}
+    ""
+  ],
 }

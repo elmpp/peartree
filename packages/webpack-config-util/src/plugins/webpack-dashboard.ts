@@ -1,5 +1,5 @@
 import DashboardPlugin from 'webpack-dashboard/plugin'
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 import {isClient, isServer} from '../config-util'
 
 /**
@@ -7,12 +7,12 @@ import {isClient, isServer} from '../config-util'
  *  - plugin - https://tinyurl.com/y68pkot9
  *  - electron dashboard (installed via brew) - https://tinyurl.com/y3dmcxbs
  */
-export const webpackDashboard: Plugin<never> = () => config => {
+export const webpackDashboard: Plugin<undefined> = () => config => {
   if (process.env.__BUNDLE_ANALYSER_WEB_ENABLE && isClient(config)) {
-    config.plugins.push(new DashboardPlugin())
+    config.plugins = (config.plugins || []).concat(new DashboardPlugin())
   }
   if (process.env.__BUNDLE_ANALYSER_NODE_ENABLE && isServer(config)) {
-    config.plugins.push(new DashboardPlugin())
+    config.plugins = (config.plugins || []).concat(new DashboardPlugin())
   }
 
   return config

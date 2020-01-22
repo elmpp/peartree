@@ -49,7 +49,7 @@ const checkout: CustomActionFunction = (answers: Answers) => {
   execFileSync(
     'node',
     [
-      path.resolve(__dirname, '../../build/dist/bin/git-upstreamable-init.js'),
+      path.resolve(__dirname, '../../build/dist/scripts/git/git-upstreamable-init.js'),
       answers.org,
       answers.remote,
       answers.branch,

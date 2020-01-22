@@ -132,6 +132,7 @@ const commonSettings = {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
   },
+  'import/internal-regex': /^@peartree/,
 }
 
 module.exports = {

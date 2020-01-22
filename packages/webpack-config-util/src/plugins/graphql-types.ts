@@ -1,4 +1,4 @@
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 import {addLoaderExcludes, addResolveExtensions} from '../config-util'
 
 /**

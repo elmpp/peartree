@@ -70,8 +70,8 @@ This will output the full webpack config. Debug here or apply the [debug plugin]
 
 | parameter     | web/node | default |  type  | description                                                                                                                                                                     |
 |-------|----|-------------------------------------------|:---:|---:|
-|     nodeBundle   | node  | *required* | string | the name of the bundle file |
-|     buildDir   | node  | *required* | string | where the bundle will be output to |
+|     nodeBundle   | node  | index | string | the name of the bundle file |
+|     buildDir   | node  | dist | string | where the bundle will be output to |
 |     host   | node  | localhost | string | where the bundle will be output to |
 |     port   | node  | 3000 | number | where the bundle will be output to |
 |     serverEntryPoint   | web & node  | (src/)index.js | string | [entry point](https://webpack.js.org/concepts/entry-points/#single-entry-shorthand-syntax) relative to ./src directory |

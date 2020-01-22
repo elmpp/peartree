@@ -1,4 +1,4 @@
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 import {addLoaderExcludes} from '../config-util'
 import path from 'path'
 
@@ -11,7 +11,7 @@ import path from 'path'
  *  - react-native-paper docs - https://tinyurl.com/yxkp52gl
  *  - note that the Material Icons used in RNP v.3 is actually now - https://materialdesignicons.com/
  */
-export const reactNativeVectorIcons: Plugin<never> = () => config => {
+export const reactNativeVectorIcons: Plugin<undefined> = () => config => {
   config = addLoaderExcludes({loaderName: 'file-loader', payload: [/\.ttf$/]})(config)
 
   config.module.rules.push({

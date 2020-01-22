@@ -1,5 +1,7 @@
-import * as plugins from './plugins'
+// import * as plugins from './plugins'
+// export * from './plugins/'
 import {getDevPackagesPaths} from './util'
-import compose from 'compose-function'
+import {createConfig} from './config/create-config'
+import {Options} from './__types__'
 
-export {plugins, getDevPackagesPaths, compose}
+export {getDevPackagesPaths, createConfig, Options}

@@ -1,5 +1,5 @@
 {
-  "name": "{{packageName}}",
+  "name": "@{{ org }}/{{ name }}",
   "version": "{{ lernaVersion }}",
   "description": "Default description for {{ name }}",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
@@ -64,13 +64,14 @@
   },
   "devDependencies": {
     {{#match transpile '-webpack' }}
-    "@peartree/webpack-config-util": "*"
+    "@peartree/webpack-config-util": "*",
     {{else}}
       {{#equal transpile 'ts-tsc' }}
       {{else}}
     "@peartree/build-toolkit": "*",
-    "@peartree/webpack-config-util": "*"
+    "@peartree/webpack-config-util": "*",
       {{/equal}}
     {{/match}}
+    "": ""
   }
 }

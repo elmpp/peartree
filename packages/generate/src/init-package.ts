@@ -7,7 +7,8 @@
 import fs from 'fs'
 import _ from 'lodash'
 import path from 'path'
-import {AddManyActionConfig} from 'plop'
+import {AddManyActionConfig, CustomActionFunction} from 'plop'
+import {execSync} from 'child_process'
 
 interface Answers {
   name: string
@@ -28,7 +29,7 @@ export const initPackage = () => ({
     {
       type: 'input',
       name: 'name',
-      message: 'Package name',
+      message: 'Directory name',
     },
     {
       type: 'list',
@@ -41,6 +42,12 @@ export const initPackage = () => ({
           })
           .filter(dirent => dirent.isDirectory())
           .map(dirent => dirent.name.replace(/@/, '')),
+    },
+    {
+      type: 'list',
+      name: 'packageName',
+      message: 'Project name:',
+      choices: (answers: Answers) => [`@${answers.org}/${answers.name}`, `${answers.name}`],
     },
     {
       type: 'confirm',
@@ -107,9 +114,20 @@ export const initPackage = () => ({
           // org: answers.org.replace(/@/, ''),
         },
       } as AddManyActionConfig,
+      postCreate,
     ]
   },
 })
+
+/**
+ *  - Sets up our typings folders in the base of the org. This symbolic link will be made
+ * to the base of the monorepo which should already be a link to typescript-aliases:typings
+ * This way all orgs will have their own copy of the typescript aliases when splitted
+ */
+const postCreate: CustomActionFunction = (answers: Answers) => {
+  execSync(`yarn postinstall`, {stdio: 'inherit', cwd: getDestinationDir(answers)})
+  return 'postCreate hook ran'
+}
 
 const getLernaVersion = () => {
   return '0.0.0' // independent mode

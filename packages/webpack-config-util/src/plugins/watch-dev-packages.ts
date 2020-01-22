@@ -1,4 +1,4 @@
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 import path from 'path'
 import _ from 'lodash'
 

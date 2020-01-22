@@ -7,7 +7,7 @@ import path from 'path'
 import WebpackConfigHelpers from 'razzle-dev-utils/WebpackConfigHelpers'
 import {DefinePlugin, RuleSetCondition, RuleSetLoader, RuleSetConditions} from 'webpack'
 import webpackNodeExternals, {WhitelistOption} from 'webpack-node-externals'
-import {Plugin, Configuration} from './__types__'
+import {Plugin, Configuration, ConfigurationNode} from './__types__'
 import {LoaderIncludeExcludeEntry} from './__types__'
 
 const Helpers = new WebpackConfigHelpers(process.cwd())
@@ -30,17 +30,17 @@ export const isClient: (args: Pick<Configuration, 'target'>) => boolean = config
  * Adds definitions onto existing DefinePlugin definitions; adds plugin to the list otherwise
  */
 export const addDefinePluginDefinitions: Plugin<Dictionary<string>> = definitions => config => {
-  const pluginWrappers = Helpers.getPluginsByName(config, 'DefinePlugin')
+  const pluginWrappers = Helpers.getPluginsByName<DefinePlugin>(config, 'DefinePlugin')
 
   if (pluginWrappers.length > 1) {
     throw Error(
       'Multiple instances of DefinePlugin found. This component assumes that you are using a single instance (or none)'
     )
   } else if (pluginWrappers.length === 0) {
-    config.plugins.push(new DefinePlugin(definitions))
+    ;(config.plugins as any).push(new DefinePlugin(definitions))
   } else {
-    config.plugins[pluginWrappers[0].index].definitions = {
-      ...config.plugins[pluginWrappers[0].index].definitions,
+    ;(config.plugins as any)[pluginWrappers[0].index].definitions = {
+      ...(config.plugins as any)[pluginWrappers[0].index].definitions,
       ...definitions,
     }
   }
@@ -186,7 +186,11 @@ export const removeLoader: Plugin<string> = loaderName => config => {
  *  - webpack docs - https://tinyurl.com/y276muk2
  *  - npm package webpack-node-externals - https://tinyurl.com/y3c5ofhd
  */
-export const externaliseNodeModules: Plugin<NodeModulesSets> = ({moduleWhitelist, nodeModuleDirs}) => config => {
+export const externaliseNodeModules: Plugin<NodeModulesSets, ConfigurationNode> = ({
+  moduleWhitelist,
+  nodeModuleDirs,
+}) => config => {
+
   const externalsWithoutFuncs = (config.externals || []).filter(external => typeof external !== 'function')
 
   // we will always need the webpack/hot/poll module bundled. (other externals from create-config should be passed through)

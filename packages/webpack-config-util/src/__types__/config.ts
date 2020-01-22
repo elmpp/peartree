@@ -4,6 +4,7 @@ import webpack, {
   ExternalsFunctionElement,
   ExternalsElement,
 } from 'webpack'
+import { ConfiguredPlugin } from './plugins'
 
 export type Target = 'node' | 'web' // | 'mobile'
 
@@ -17,11 +18,11 @@ export interface Options {
   // webBundle: string,
   host?: string
   port?: number
-  // plugins?: PluginsConfUnion[]
   serverEntryPoint?: string
   hotModuleReplacement?: boolean
   mode: Env
   target: Target
+  plugins?: ConfiguredPlugin[]
 }
 
 /**

@@ -1,5 +1,5 @@
 {
-  "name": "@peartree/build",
+  "name": "@peartree/build-toolkit",
   "version": "0.7.0",
   "description": "Default description for build",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
@@ -36,8 +36,8 @@
     "@types/fs-extra": "^8.0.1",
     "fs-extra": "^8.1.0",
     "get-dev-paths": "^0.1.1",
-    "microbundle": "^0.12.0-next.6",
-    "ts-node": "^8.6.2",
-    "webpack": "^4.41.5"
+    "microbundle": "^0.12.0-next.6"
+  },
+  "dependencies": {
   }
 }

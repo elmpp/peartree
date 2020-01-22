@@ -40,7 +40,7 @@ const resolveOwn = (relativePath: string) => path.resolve(__dirname, '..', relat
 
 export const paths = {
   appBabelRc: [resolveApp('.babelrc'), resolveApp('babel.config.js')],
-  appConfig: resolveApp('webpack.config.js'), // use .js files as ts-node isn't an option
+  appConfig: resolveApp('webpack.config.ts'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('dist'),
   appNodeModules: resolveApp('node_modules'),

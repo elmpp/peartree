@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "6.5.0",
+    "find-up": "^4.1.0",
     "inquirer-fuzzy-path": "2.1.0",
     "plop": "^2.4.0"
   },

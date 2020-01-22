@@ -1,4 +1,4 @@
-import {Plugin} from '../../__types__'
+import {Plugin, ConfigurationNode} from '../__types__'
 import {LoaderIncludeExcludeEntry} from '../__types__'
 import {isServer, externaliseNodeModules} from '../config-util'
 import {pathsToRegExp} from '../util'
@@ -9,10 +9,13 @@ import {pathsToRegExp} from '../util'
  *
  * Additional modules can be simple module names or file paths e.g. 'partridge-config'
  */
-export const whitelistModules: Plugin<{
-  bundleableModules: LoaderIncludeExcludeEntry[]
-  withHoisting: true
-}> = pluginArgs => config => {
+export const whitelistModules: Plugin<
+  {
+    bundleableModules: LoaderIncludeExcludeEntry[]
+    withHoisting: true
+  },
+  ConfigurationNode
+> = pluginArgs => config => {
   const whitelist = pathsToRegExp(pluginArgs.bundleableModules)
 
   if (isServer(config)) {

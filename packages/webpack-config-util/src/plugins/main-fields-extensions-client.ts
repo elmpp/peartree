@@ -9,7 +9,7 @@ import {targetExtensions} from './target-extensions'
  *  - mainFields - https://tinyurl.com/y42zbtl4
  *  - module resolving with extensions - https://tinyurl.com/yxuj7fku
  */
-export const mainFieldsExtensionsClient: Plugin<never> = () => config => {
+export const mainFieldsExtensionsClient: Plugin<undefined> = () => config => {
   if (isServer(config)) {
     mainFields(['source', 'module', 'main'])(config)
     targetExtensions(['.node'])(config)

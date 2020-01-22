@@ -1,4 +1,4 @@
-import {Plugin} from '../__types__'
+import {Plugin, ConfigurationNode} from '../__types__'
 import StartServerPlugin, {Args} from 'start-server-webpack-plugin'
 import {isDev} from '../config-util'
 
@@ -6,7 +6,7 @@ import {isDev} from '../config-util'
  * Enables the start-server-webpack-plugin in dev
  *  - GH - https://tinyurl.com/yyvyrox5
  */
-export const startServerPlugin: Plugin<Args> = pluginArgs => config => {
+export const startServerPlugin: Plugin<Args, ConfigurationNode> = pluginArgs => config => {
   if (!isDev(config)) {
     return config
   }
@@ -20,7 +20,7 @@ export const startServerPlugin: Plugin<Args> = pluginArgs => config => {
     nodeArgs.push(process.env.INSPECT)
   }
 
-  config.plugins.push(
+  config.plugins = (config.plugins || []).concat(
     new StartServerPlugin({
       name: `${config.output.filename}.js`,
       nodeArgs,

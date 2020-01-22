@@ -1,4 +1,4 @@
-import {Plugin} from '../../__types__'
+import {Plugin} from '../__types__'
 
 /**
  * Also allow module files to resolve preferentially if e.g. .web.tsx extension
