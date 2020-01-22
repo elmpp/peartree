@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/elmpp/peartree/compare/peartree-root@0.5.3...peartree-root@0.5.4) (2020-01-22)
+
+**Note:** Version bump only for package peartree-root
+
+
+
+
+
 ## [0.5.3](https://github.com/elmpp/peartree/compare/peartree-root@0.5.2...peartree-root@0.5.3) (2020-01-22)
 
 **Note:** Version bump only for package peartree-root
