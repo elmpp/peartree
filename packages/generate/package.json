@@ -39,5 +39,6 @@
   "dependencies": {
     "handlebars-helper-ternary": "^1.0.0",
     "lodash": "4.17.15"
-  }
+  },
+  "gitHead": "088be3d537604f75af3cf876e92dc7e0cc1ac5ac"
 }

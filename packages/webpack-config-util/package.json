@@ -55,5 +55,6 @@
     "webpack-dashboard": "^3.0.7",
     "webpack-node-externals": "^1.7.2",
     "webpackbar": "^4.0.0"
-  }
+  },
+  "gitHead": "088be3d537604f75af3cf876e92dc7e0cc1ac5ac"
 }
