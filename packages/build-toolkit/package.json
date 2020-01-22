@@ -1,6 +1,6 @@
 {
   "name": "@peartree/build-toolkit",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Default description for build",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
@@ -37,7 +37,5 @@
     "fs-extra": "^8.1.0",
     "get-dev-paths": "^0.1.1",
     "microbundle": "^0.12.0-next.6"
-  },
-  "dependencies": {
   }
 }

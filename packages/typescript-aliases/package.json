@@ -1,6 +1,6 @@
 {
   "name": "@peartree/typescript-aliases",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A set of sensible typescript aliases for complex use-cases",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
@@ -20,6 +20,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {}
+  }
 }
