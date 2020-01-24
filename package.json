@@ -1,6 +1,6 @@
 {
   "name": "peartree-root",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "private": true,
   "description": "Default description for peartree",
   "repository": "git@github.com:elmpp/peartree.git",

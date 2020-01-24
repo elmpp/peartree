@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/elmpp/peartree/compare/@peartree/generate@0.6.3...@peartree/generate@0.6.4) (2020-01-24)
+
+**Note:** Version bump only for package @peartree/generate
+
+
+
+
+
 ## [0.6.3](https://github.com/elmpp/peartree/compare/@peartree/generate@0.6.2...@peartree/generate@0.6.3) (2020-01-22)
 
 **Note:** Version bump only for package @peartree/generate

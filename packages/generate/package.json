@@ -1,6 +1,6 @@
 {
   "name": "@peartree/generate",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "code templating and generation",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
