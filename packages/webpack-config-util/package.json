@@ -1,6 +1,6 @@
 {
   "name": "webpack-config-util",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Imperative control of your webpack config using typesafe, mix and match plugins and generators",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
