@@ -16,7 +16,7 @@ interface Answers {
   jest: boolean
   published: boolean
   typescript: boolean
-  transpile: boolean
+  transpile: 'ts-tsc' | 'ts-microbundle' | 'ts-webpack' | 'js-webpack'
   _tmp: {
     templateDir: string
     destinationDir: string
@@ -114,6 +114,7 @@ export const initPackage = () => ({
           // org: answers.org.replace(/@/, ''),
         },
       } as AddManyActionConfig,
+      addDistDir,
       postCreate,
     ]
   },
@@ -127,6 +128,18 @@ export const initPackage = () => ({
 const postCreate: CustomActionFunction = (answers: Answers) => {
   execSync(`yarn postinstall`, {stdio: 'inherit', cwd: getDestinationDir(answers)})
   return 'postCreate hook ran'
+}
+
+/**
+ * Webpack will crap out if its /dist dir isn't present
+ */
+const addDistDir: CustomActionFunction = (answers: Answers) => {
+  if (answers.transpile.match(/-webpack$/)) {
+    const distPath = `${getDestinationDir(answers)}/dist`
+    fs.mkdirSync(distPath)
+    return `created a /dist dir for webpack at ${distPath}`
+  }
+  return '/dist dir not required'
 }
 
 const getLernaVersion = () => {

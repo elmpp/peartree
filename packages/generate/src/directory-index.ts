@@ -74,7 +74,9 @@ export const directoryIndex = () => ({
  *  - code - https://tinyurl.com/yy33ea24
  */
 const findFiles: CustomActionFunction = (answers: any) => {
-  const files = fs.readdirSync(answers.directory).filter(filename => !filename.startsWith('.'))
+  const files = fs
+    .readdirSync(answers.directory)
+    .filter(filename => !filename.startsWith('.') && !filename.startsWith('index') && !filename.match(/\.ignore\./))
 
   // we'll just stick the files it onto the answers
   answers.files = files

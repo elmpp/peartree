@@ -25,7 +25,7 @@ import {isDev, isServer, isClient} from '../config-util'
 export const createConfig = (
   // target: Target,
   // env: Env, // this defines the contents of the build (plugins etc). Does not effect NODE_ENV
-  options: Options,
+  options: Options
   // _webpackObject: WebpackObject
 ): Configuration => {
   // const pluginOptions = {
@@ -40,7 +40,15 @@ export const createConfig = (
   //   target,
   //   mode: options.mode,
   // }
-  const {host = 'localhost', port = 3000, mode, target, nodeBundle = 'index', buildDir = 'dist', serverEntryPoint = 'index.js'} = options
+  const {
+    host = 'localhost',
+    port = 3000,
+    mode,
+    target,
+    nodeBundle = 'index',
+    buildDir = paths.appBuild,
+    serverEntryPoint = 'index.js',
+  } = options
 
   // const IS_NODE = isServer(options)
   const IS_DEV = isDev(options)

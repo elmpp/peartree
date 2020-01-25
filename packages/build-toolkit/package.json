@@ -5,7 +5,7 @@
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elmpp/peartree.git"
@@ -24,7 +24,7 @@
     "transpile-watch": "yarn transpile --watch"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "protected"
   },
   "bugs": {
     "url": "https://github.com/elmpp/peartree/issues"
@@ -38,5 +38,5 @@
     "get-dev-paths": "^0.1.1",
     "microbundle": "^0.12.0-next.6"
   },
-  "gitHead": "088be3d537604f75af3cf876e92dc7e0cc1ac5ac"
+  "gitHead": "6fd354bc4a34ed83482e009aca4a501346a3f679"
 }

@@ -7,15 +7,11 @@ import path from 'path'
 import WebpackConfigHelpers from 'razzle-dev-utils/WebpackConfigHelpers'
 import {DefinePlugin, RuleSetCondition, RuleSetLoader, RuleSetConditions} from 'webpack'
 import webpackNodeExternals, {WhitelistOption} from 'webpack-node-externals'
-import {Plugin, Configuration, ConfigurationNode} from './__types__'
+import {Plugin, Configuration, ConfigurationNode, LoaderPluginArgs} from './__types__'
 import {LoaderIncludeExcludeEntry} from './__types__'
 
 const Helpers = new WebpackConfigHelpers(process.cwd())
 
-interface LoaderPluginArgs<T> {
-  loaderName: string
-  payload: T
-}
 // type LoaderIncludeExcludeEntry = string | RegExp
 type NodeModulesSets = {
   moduleWhitelist: WhitelistOption[]

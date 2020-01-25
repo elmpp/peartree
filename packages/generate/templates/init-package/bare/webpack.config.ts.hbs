@@ -1,12 +1,12 @@
 /**
  *  - full list of plugins here - https://tinyurl.com/w44zy8b
  */
-import {getDevPackagesPaths, Config} from 'webpack-config-util'
+import {getDevPackagesPaths, Options} from 'webpack-config-util'
 import {mainFields, whitelistAllModules} from 'webpack-config-util/plugins'
 
 const composedPlugins = [mainFields(['ts', 'tsx', 'js']), whitelistAllModules()]
 
-const config: Config = {
+const config: Options = {
   plugins: composedPlugins,
   target: 'node',
   mode: process.env.NODE_ENV,

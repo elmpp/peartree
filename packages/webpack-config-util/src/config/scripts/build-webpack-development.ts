@@ -6,11 +6,14 @@
  * By default will have:
  *  - watch
  *  - debugger
+ *
+ *  - webpack configuration in typescript -
  */
 
 import {Configuration} from '../../__types__'
 import fs from 'fs-extra'
 import webpack, {WatchOptions} from 'webpack'
+import {spawn} from 'child_process'
 import {paths} from '../paths'
 import clearConsole from 'react-dev-utils/clearConsole'
 import printErrors from 'razzle-dev-utils/printErrors'
@@ -24,6 +27,7 @@ process.noDeprecation = true // turns off that loadQuery clutter.
 // can pass them when we invoke nodejs
 process.env.INSPECT_BRK = process.argv.find(arg => arg.match(/--inspect-brk(=|$)/)) || ''
 process.env.INSPECT = process.argv.find(arg => arg.match(/--inspect(=|$)/)) || ''
+const verbose = process.argv.find(arg => arg.match(/--verbose(=|$)/))
 
 function main() {
   // Optimistically, we make the console look exactly like the output of our
@@ -33,6 +37,8 @@ function main() {
 
   const options = readOptions(paths.appConfig, logger)
   const webpackConf = createConfigWithPlugins({mode: process.env.NODE_ENV, ...options})
+
+  logConfig(webpackConf)
 
   // Delete assets.json to always have a manifest up to date
   fs.removeSync(paths.appManifest)
@@ -73,6 +79,17 @@ function compile(config: Configuration): webpack.Compiler {
   } catch (e) {
     printErrors('Failed to compile.', [e])
     return process.exit(1)
+  }
+}
+
+const doExecWithPipe = (cmdWithPipe: string) => {
+  spawn('sh', ['-c', cmdWithPipe], {stdio: 'inherit', env: {HUSKY_SKIP_HOOKS: '1'}} as any)
+}
+
+function logConfig(config: Configuration) {
+  if (verbose) {
+    console.log(`------------------- CONFIG: --------------------------`)
+    doExecWithPipe(`echo '${JSON.stringify(config, null, 1)}'`)
   }
 }
 

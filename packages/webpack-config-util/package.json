@@ -1,6 +1,6 @@
 {
   "name": "webpack-config-util",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Imperative control of your webpack config using typesafe, mix and match plugins and generators",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
@@ -9,7 +9,7 @@
     "webpack",
     "typescript"
   ],
-  "private": false,
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elmpp/peartree.git"
@@ -45,16 +45,19 @@
     "@types/webpack-env": "^1.15.0",
     "@types/webpack-node-externals": "^1.7.0",
     "@types/webpackbar": "^2.6.0",
+    "babel-loader": "8.0.6",
+    "babel-preset-razzle": "3.0.0",
     "lodash": "4.17.15",
     "lodash-webpack-plugin": "^0.11.5",
     "razzle-dev-utils": "^3.0.0",
     "start-server-webpack-plugin": "^2.2.5",
     "ts-node": "8.6.2",
+    "typescript": "3.7.4",
     "webpack": "4.41.5",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-dashboard": "^3.0.7",
     "webpack-node-externals": "^1.7.2",
     "webpackbar": "^4.0.0"
   },
-  "gitHead": "40bee43e6726fd238cf631a7f3702a207bdef77d"
+  "gitHead": "6fd354bc4a34ed83482e009aca4a501346a3f679"
 }

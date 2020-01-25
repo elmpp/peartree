@@ -44,8 +44,8 @@
     "transpile-watch": "peartree-build build-microbundle-watch -f es,cjs,modern --target node",
     {{/equal}}
     {{#match transpile '-webpack' }}
-    "build": "NODE_ENV=production build-webpack-production",
-    "dev": "NODE_ENV=development build-webpack-development",
+    "build": "NODE_ENV=production TS_NODE_FILES=true build-webpack-production",
+    "dev": "NODE_ENV=development TS_NODE_FILES=true build-webpack-development --verbose",
     {{/match}}
     "": ""
   },
@@ -64,12 +64,12 @@
   },
   "devDependencies": {
     {{#match transpile '-webpack' }}
-    "@peartree/webpack-config-util": "*"
+    "webpack-config-util": "*"
     {{else}}
       {{#equal transpile 'ts-tsc' }}
       {{else}}
     "@peartree/build-toolkit": "*",
-    "@peartree/webpack-config-util": "*"
+    "webpack-config-util": "*"
       {{/equal}}
     {{/match}}
   }

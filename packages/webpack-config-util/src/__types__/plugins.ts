@@ -6,3 +6,8 @@ export type Plugin<P = undefined, T extends Configuration = Configuration> = P e
   : (options: P) => ConfiguredPlugin<T>
 
 export type LoaderIncludeExcludeEntry = string | RegExp
+
+export interface LoaderPluginArgs<T> {
+  loaderName: 'ts-loader' | 'babel-loader' | 'file-loader'
+  payload: T
+}
