@@ -1,7 +1,7 @@
 {
-  "name": "@peartree/generate",
-  "version": "0.6.4",
-  "description": "code templating and generation",
+  "name": "monotonous",
+  "version": "0.0.0",
+  "description": "A little bit of convention goes a long way. Take the monotony out of your monorepo workflow for good.",
   "author": "Matt Penrice <matthew.penrice@gmail.com>",
   "homepage": "https://github.com/elmpp/peartree#readme",
   "license": "MIT",
