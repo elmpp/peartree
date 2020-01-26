@@ -1,1 +1,0 @@
-/// <reference path="./handlebars-helper-ternary.d.ts" />
