@@ -25,21 +25,5 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "es2017", // to allow use of Object.values
-  },
-  // exclude, include etc are resolved relative to file they're defined in!!
-  "exclude": [
-    "**/__tests__/**/*",
-    "**/__mocks__/**/*",
-    "**/*.pre-*.*",
-    "**/*.post-*.*",
-    "**/*.deleteable.*",
-    "**/*.ignore.*",
-    "**/*.skip.*",
-    // cover everything, essentially
-    "**/node_modules",
-    "**/dist",
-    // "**/acceptance-tests",
-    // "**/webpack",
-    // "**/jest",
-  ],
+  }
 }
