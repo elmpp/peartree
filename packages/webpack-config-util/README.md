@@ -14,7 +14,7 @@
 Declarative configuration is great but the learning cost is high for the majority of folk. Sometimes
 you just want to create a webpack config with a few options and then sprinkle on a few settings.
 
-## This Solution <a name = "solution"></a>
+## The Solution <a name = "solution"></a>
 
 Webpack config util offers 2 methods to create the perfect config:
 
@@ -29,7 +29,7 @@ Full list of [options here](#options)
 #### 🩹 Plugins:
 
 A grab bag of imperative "plugins" that understand the config
-they're operating on. Just stack them up and tailor for your use case
+they're operating on. Just stack them up according to your use case
 
 We have found for our projects this really helps with auditing what it is we want our
 bundler to actually do for us. It's far too easy for codebases and bundler configs to get
@@ -64,9 +64,23 @@ const config = composedPlugins(createConfig({}))
 export default config
 ```
 
-This will output the full webpack config. Debug here or apply the [debug plugin](#plugin-debug-config)
+
+> Again, this assumes a `webpack.config.ts`. For JS configs, drop the [TS_NODE_FILES](https://github.com/TypeStrong/ts-node#help-my-types-are-missing) env
+```json
+// package.json
+{
+  ...
+  "scripts": {
+    "dev": "NODE_ENV=development TS_NODE_FILES=true build-webpack-development --verbose",
+    "build": "NODE_ENV=production TS_NODE_FILES=true build-webpack-production"
+  }
+}
+```
+
+Command line docs are [here](#commandline)
 
 ## Options <a name = "options"></a>
+
 
 | parameter     | web/node | default |  type  | description                                                                                                                                                                     |
 |-------|----|-------------------------------------------|:---:|---:|
@@ -78,6 +92,12 @@ This will output the full webpack config. Debug here or apply the [debug plugin]
 |     hotModuleReplacement   | web  | true | boolean | whether to apply the hot [module replacement plugin](https://webpack.js.org/concepts/hot-module-replacement/#root) |
 |     mode   | web & node  | *required* | 'development' or 'production' | defines whether webpack will operate in dev [mode](https://webpack.js.org/configuration/mode/#root). Note this is distinct from NODE_ENV |
 |     target   | web & node  | *required* | 'web' or 'node' | defines the target platform [target](https://webpack.js.org/concepts/targets/#root) |
+
+## Command Line  <a name = "commandline"></a>
+
+| parameter            |         description                                                                                                                                                                     |
+|---------------------:|--------------------------:|
+|  verbose             |   logs the full config to the console
 
 ## Plugins <a name = "plugins"></a>
 
