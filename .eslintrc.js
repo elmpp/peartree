@@ -8,8 +8,6 @@
  *  - good blog post about typescript eslint - https://tinyurl.com/y29eselt
  */
 
-const path = require('path')
-
 const commonPrettierRules = {
   singleQuote: true,
   bracketSpacing: false,
@@ -167,7 +165,7 @@ module.exports = {
         sourceType: 'module',
         project: [
           // all tsconfigs are needed - https://tinyurl.com/yx2ywkwm
-          './packages/**/tsconfig.json',
+          './packages/*/tsconfig.json',
         ],
       },
       plugins: ['react', '@typescript-eslint'],
